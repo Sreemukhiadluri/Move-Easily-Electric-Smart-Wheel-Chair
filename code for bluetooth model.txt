@@ -1,0 +1,41 @@
+#include <SoftwareSerial.h> SoftwareSerial Genotronex(10,11); int ledpin=13;
+int BluetoothData; void setup()
+{
+
+Genotronex.b
+
+
+
+egin(9600);
+
+Genotronex.println("Bluetooth On please press 1 or 0 blink LED"); pinMode(ledpin,OUTPUT);
+}
+
+void loop()
+
+{
+
+if(Genotronex.available())
+
+{
+
+BluetoothData=Genotronex.read(); if(BluetoothData=='1')
+{
+
+digitalWrite(ledpin,1); Genotronex.println("LED On D13 ON!");
+}
+
+if(BluetoothData=='0')
+
+{
+
+digitalWrite(ledpin,0); Genotronex.println("LED On D13 Off!");
+}
+
+
+
+}
+
+delay(100);
+
+}
